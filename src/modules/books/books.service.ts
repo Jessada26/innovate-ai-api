@@ -3,16 +3,16 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateBookDto } from './dto/create-book.dto';
 import { UpdateBookDto } from './dto/update-book.dto';
-import { Book } from './entities/book.entity';
+import { BookEntity } from './entities/book.entity';
 
 @Injectable()
 export class BooksService {
   constructor(
-    @InjectRepository(Book)
-    private readonly bookRepository: Repository<Book>,
+    @InjectRepository(BookEntity)
+    private readonly bookRepository: Repository<BookEntity>,
   ) {}
 
-  async create(createBookDto: CreateBookDto): Promise<Book> {
+  async create(createBookDto: CreateBookDto): Promise<BookEntity> {
     const book = this.bookRepository.create(createBookDto);
     return this.bookRepository.save(book);
   }
@@ -21,7 +21,7 @@ export class BooksService {
     page: number = 1,
     limit: number = 10,
   ): Promise<{
-    data: Book[];
+    data: BookEntity[];
     total: number;
     page: number;
     limit: number;
@@ -42,7 +42,7 @@ export class BooksService {
     };
   }
 
-  async findOne(id: string): Promise<Book> {
+  async findOne(id: string): Promise<BookEntity> {
     const book = await this.bookRepository.findOneBy({ id });
     if (!book) {
       throw new NotFoundException(`Book with ID ${id} not found`);
@@ -50,7 +50,7 @@ export class BooksService {
     return book;
   }
 
-  async update(id: string, updateBookDto: UpdateBookDto): Promise<Book> {
+  async update(id: string, updateBookDto: UpdateBookDto): Promise<BookEntity> {
     const existing = await this.bookRepository.findOneBy({ id });
     if (!existing) {
       throw new NotFoundException(`Book with ID ${id} not found`);
