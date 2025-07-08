@@ -1,4 +1,4 @@
-name: KRYPTODIAN_API
+name: INNOVATE_AI_API
 
 on:
   push:
@@ -28,7 +28,7 @@ jobs:
           echo "$PRIVATE_KEY" > private_key && chmod 400 private_key
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
           
-             cd kryptodian-api
+             cd innovate-ai-api
              docker system prune -f
              git fetch -p
              git pull origin develop

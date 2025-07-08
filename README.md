@@ -30,7 +30,7 @@
 
 ```bash
 # node version
-$ 16.19.1
+$ 20.16.0
 ```
 
 ```bash

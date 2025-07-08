@@ -1,8 +1,8 @@
 version: "3.6"
 
 services:
-  kryptodian_api:
-    image: image_kryptodian_api
+  innovate_ai_api:
+    image: image_innovate_ai_api
     build:
       context: .
       dockerfile: Dockerfile
