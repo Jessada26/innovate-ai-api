@@ -7,6 +7,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
 import { UserEntity } from './modules/users/entities/user.entity';
 import { RoleEntity } from './modules/roles/entities/role.entity';
+import { BookEntity } from './modules/books/entities/book.entity';
 import { AuthModule } from './modules/auth/auth.module';
 import { RolesModule } from './modules/roles/roles.module';
 import { BooksModule } from './modules/books/books.module';
@@ -26,7 +27,7 @@ import { BooksModule } from './modules/books/books.module';
       username: process.env.DB_USERNAME || 'root',
       password: process.env.DB_PASSWORD || '',
       database: process.env.DB_NAME,
-      entities: [UserEntity, RoleEntity],
+      entities: [UserEntity, RoleEntity, BookEntity],
       synchronize: false,
     }),
     UsersModule,
