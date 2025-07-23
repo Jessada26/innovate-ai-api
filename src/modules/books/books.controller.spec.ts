@@ -32,7 +32,6 @@ describe('BooksController', () => {
     controller = module.get<BooksController>(BooksController);
     service = module.get<BooksService>(BooksService);
 
-    // เคลียร์ mock แต่ละรอบ
     jest.clearAllMocks();
   });
 
